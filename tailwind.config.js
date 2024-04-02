@@ -20,7 +20,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'primary-500': '#877EFF',
+        'primary-500': '#993299',
         'primary-600': '#5D5FEF',
         'secondary-500': '#FFB620',
         'off-white': '#D0DFFF',
@@ -33,6 +33,11 @@ module.exports = {
         'light-2': '#EFEFEF',
         'light-3': '#7878A3',
         'light-4': '#5C5C7B',
+        'success-color': '#31C48D',
+        'error-color': '#F98080',
+        'info-color': '#F0F8FF',
+        'warning-color': '#FFFAF0',
+        'black': '#000000',
       },
       screens: {
         'xs': '480px',

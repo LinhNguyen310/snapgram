@@ -15,6 +15,19 @@
 }
 
 @layer utilities {
+  /* COLORS */
+  .bg-success {
+    @apply bg-success-color;
+  }
+  .bg-error {
+    @apply bg-error-color;
+  }
+  .bg-warning {
+    @apply bg-warning-color;
+  }
+  .bg-info {
+    @apply bg-info-color;
+  }
   /* TYPOGRAPHY */
   .h1-bold {
     @apply text-[36px] font-bold leading-[140%] tracking-tighter;
@@ -258,7 +271,7 @@
   }
 
   .shad-input {
-    @apply h-12 bg-dark-4 border-none placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+    @apply h-10 bg-dark-4 border-none placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
   }
 
   .shad-textarea {
@@ -277,4 +290,6 @@
   .shad-button_ghost {
     @apply flex gap-4 items-center justify-start hover:bg-transparent hover:text-white !important;
   }
+
+  /* Toast */
 }
