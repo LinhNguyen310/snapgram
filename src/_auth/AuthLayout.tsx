@@ -2,10 +2,11 @@ import { Outlet, Navigate } from "react-router-dom";
 
 import { useUserContext } from "@/context/AuthContext";
 import Spline from "@splinetool/react-spline";
+import { useTheme } from "@/components/ui/theme-provider";
 
 export default function AuthLayout() {
   const { isAuthenticated } = useUserContext();
-
+  const { theme } = useTheme();
   return (
     <>
       {isAuthenticated ? (
@@ -17,7 +18,11 @@ export default function AuthLayout() {
           </section>
 
           <div className="flex-1">
-            <Spline scene="https://prod.spline.design/n-jcr-WS28CAsiIq/scene.splinecode" />
+            {theme === "dark" ? (
+                <Spline scene="https://prod.spline.design/n-jcr-WS28CAsiIq/scene.splinecode" />
+            ) : (
+              <Spline scene="https://prod.spline.design/cbCEp4Z-r6Y8I8cT/scene.splinecode" />
+            )}
           </div>
         </>
       )}

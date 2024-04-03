@@ -17,12 +17,15 @@ import { useToast } from "@/components/ui/use-toast"
 import { useCreateUserAccount, useSignInAccount } from "@/lib/react-query/queriesAndMutations"
 import { useUserContext } from "@/context/AuthContext"
 import {Link, useNavigate } from "react-router-dom"
+import { useTheme } from "@/components/ui/theme-provider"
 
 const SignupForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
-
+  const { theme } = useTheme();
+  const inputClass = `shad-input ${theme}`;
+  const shadButtonClass = `shad-button_primary ${theme}`;
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
     defaultValues: {
@@ -89,7 +92,7 @@ const SignupForm = () => {
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-4">
           Create a new account
         </h2>
-        <p className="text-light-3 small-medium md:base-regular mt-2">
+        <p className=" small-medium md:base-regular mt-2">
           To use snapgram, Please enter your details
         </p>
 
@@ -101,9 +104,9 @@ const SignupForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Name</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="text" className={inputClass}{...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -115,9 +118,9 @@ const SignupForm = () => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Username</FormLabel>
+                <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="text" className={inputClass} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -129,9 +132,9 @@ const SignupForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Email</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="text" className={inputClass} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -143,22 +146,23 @@ const SignupForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Password</FormLabel>
+                <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" className="shad-input" {...field} />
+                  <Input type="password" className={inputClass} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+          <h1>{inputClass}</h1>
           <>
-            {isCreatingAccount || isSigningInUser || isUserLoading ? (<Button className="shad-button_primary " disabled> 
+            {isCreatingAccount || isSigningInUser || isUserLoading ? (<Button className={shadButtonClass} disabled> 
             <div role="status">
               <Loader />
             </div>
-            </Button>) : (<Button className="shad-button_primary">Sign up</Button>)}
+            </Button>) : (<Button className={shadButtonClass}>Sign up</Button>)}
           </>
-          <p className="text-small-regular text-light-2 text-center mt-2">
+          <p className="text-small-regular text-center mt-2">
             Already have an account?
             <Link to="/sign-in" className="text-primary-500 text-small-semibold ml-1"> Sign in</Link>
           </p>

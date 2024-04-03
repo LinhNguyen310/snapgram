@@ -8,9 +8,15 @@
   * {
     @apply box-border list-none p-0 m-0 scroll-smooth;
   }
-
   body {
-    @apply bg-dark-1 text-white min-h-screen font-inter;
+    @apply bg-dark-1 text-white  min-h-screen font-inter; 
+  }
+  body.dark {
+    @apply bg-dark-1 text-white  min-h-screen font-inter; 
+  }
+
+  body.light {
+    @apply bg-light-1 text-black min-h-screen font-inter;
   }
 }
 
@@ -270,8 +276,11 @@
     @apply text-red !important;
   }
 
-  .shad-input {
+  .shad-input.dark {
     @apply h-10 bg-dark-4 border-none placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+  }
+  .shad-input.light {
+    @apply h-10 bg-light-1 border-dark-1 placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
   }
 
   .shad-textarea {
@@ -279,10 +288,12 @@
   }
 
   /* Button */
-  .shad-button_primary {
+  .shad-button_primary.dark{
     @apply bg-primary-500 hover:bg-primary-500 text-light-1 flex gap-2 !important;
   }
-
+  .shad-button_primary.light{
+    @apply bg-dark-4 text-light-1 flex gap-2 !important;
+  }
   .shad-button_dark_4 {
     @apply h-12 bg-dark-4 px-5 text-light-1 flex gap-2 !important;
   }
