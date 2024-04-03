@@ -51,7 +51,7 @@ const SignupForm = () => {
     }
   }
   return (
-    <div className="h-screen">
+    <>
       <Form {...form}>
       <div className="sm:w-420 flex-center flex-col pt-4">
         <img 
@@ -138,8 +138,7 @@ const SignupForm = () => {
         </form>
       </div>
       </Form>
-    </div>
-
+    </>
   )
 }
 
