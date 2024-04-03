@@ -1,26 +1,26 @@
 import { Outlet, Navigate } from "react-router-dom";
+
+import { useUserContext } from "@/context/AuthContext";
 import Spline from "@splinetool/react-spline";
 
-const AuthLayout = () => {
-  const isAuthenticated = false;
+export default function AuthLayout() {
+  const { isAuthenticated } = useUserContext();
+
   return (
     <>
-      {isAuthenticated ? 
-      (<Navigate to="/" />) : 
-      (
-        <div className="flex">
-          <div className="h-screen flex-1 flex items-center justify-center">
-            <section>
-              <Outlet />
-            </section>
-          </div>
+      {isAuthenticated ? (
+        <Navigate to="/" />
+      ) : (
+        <>
+          <section className="flex flex-1 justify-center items-center flex-col py-10">
+            <Outlet />
+          </section>
+
           <div className="flex-1">
             <Spline scene="https://prod.spline.design/n-jcr-WS28CAsiIq/scene.splinecode" />
           </div>
-        </div>
+        </>
       )}
     </>
   )
 }
-
-export default AuthLayout;
