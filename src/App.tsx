@@ -13,7 +13,7 @@ import "./globals.css";
 const App = () => {
   console.log('App');
   return (
-    <main className="flex h-screen">
+    <main className="h-screen">
       <Routes>
         {/* public routes */}
         <Route element={<AuthLayout />}>
