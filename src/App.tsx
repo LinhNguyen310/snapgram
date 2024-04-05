@@ -13,6 +13,7 @@ import "./globals.css";
 import { ModeToggle } from "./components/ui/mode-toggle";
 
 const App = () => {
+  
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="absolute left-1">

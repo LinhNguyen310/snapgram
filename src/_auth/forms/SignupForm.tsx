@@ -44,8 +44,8 @@ const SignupForm = () => {
   const handleSignup = async (user: z.infer<typeof SignupValidation>) => {
     try {
       const newUser = await createUserAccount(user);
-
-      if (!newUser) {
+      console.log("newUser")
+      if (newUser) {
         toast({ title: "Sign up failed. Please try again.", });
         
         return;
@@ -65,11 +65,10 @@ const SignupForm = () => {
       }
 
       const isLoggedIn = await checkAuthUser();
-
+      console.log({ isLoggedIn });
       if (isLoggedIn) {
         form.reset();
 
-        navigate("/");
       } else {
         toast({ title: "Login failed. Please try again.", });
         
@@ -84,10 +83,10 @@ const SignupForm = () => {
     <>
       <Form {...form}>
       <div className="sm:w-420 flex-center flex-col pt-4">
-        <img 
+        {/* <img 
           src="/assets/images/logo.svg" 
           alt="logo"
-          width={100}/>
+          width={100}/> */}
 
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-4">
           Create a new account
@@ -154,7 +153,6 @@ const SignupForm = () => {
               </FormItem>
             )}
           />
-          <h1>{inputClass}</h1>
           <>
             {isCreatingAccount || isSigningInUser || isUserLoading ? (<Button className={shadButtonClass} disabled> 
             <div role="status">

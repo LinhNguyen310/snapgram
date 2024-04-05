@@ -32,9 +32,7 @@ export function ThemeProvider({
 
   useEffect(() => {
     const body = document.querySelector("body")
-    console.log(body?.classList)
     body?.classList.remove("light", "dark")
-    console.log(body?.classList)
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")

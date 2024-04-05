@@ -59,7 +59,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return false;
     } catch (error) {
-      console.error(error);
       return false;
     } finally {
       setIsLoading(false);
@@ -73,7 +72,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       cookieFallback === null ||
       cookieFallback === undefined
     ) {
-      navigate("/sign-up");
+      navigate("/sign-in");
+    } else {
+      navigate("/");
     }
 
     checkAuthUser();

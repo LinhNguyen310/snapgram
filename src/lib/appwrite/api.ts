@@ -1,6 +1,6 @@
 import { ID, Query } from "appwrite";
 
-import { appwriteConfig, databases, storage, avatars, account } from "./config";
+import { appwriteConfig, account, databases, storage, avatars } from "./config";
 import { IUpdatePost, INewPost, INewUser, IUpdateUser } from "@/types";
 
 // ============================================================
@@ -16,7 +16,7 @@ export async function createUserAccount(user: INewUser) {
       user.password,
       user.name
     );
-    console.log({ newAccount })
+
     if (!newAccount) throw Error;
 
     const avatarUrl = avatars.getInitials(user.name);
@@ -28,7 +28,7 @@ export async function createUserAccount(user: INewUser) {
       username: user.username,
       imageUrl: avatarUrl,
     });
-    console.log({ newUser })
+
     return newUser;
   } catch (error) {
     console.log(error);
@@ -51,7 +51,7 @@ export async function saveUserToDB(user: {
       ID.unique(),
       user
     );
-    console.log({ newUser });
+
     return newUser;
   } catch (error) {
     console.log(error);
@@ -61,8 +61,8 @@ export async function saveUserToDB(user: {
 // ============================== SIGN IN
 export async function signInAccount(user: { email: string; password: string }) {
   try {
-    const session = await account.createEmailPasswordSession(user.email, user.password);
-
+    const session = await account.createEmailSession(user.email, user.password);
+    console.log({ session });
     return session;
   } catch (error) {
     console.log(error);
@@ -85,7 +85,7 @@ export async function getCurrentUser() {
   try {
     const currentAccount = await getAccount();
 
-    if (!currentAccount) throw Error;
+    if (!currentAccount || !currentAccount.$id) throw new Error('Account not found');
 
     const currentUser = await databases.listDocuments(
       appwriteConfig.databaseId,
@@ -93,7 +93,7 @@ export async function getCurrentUser() {
       [Query.equal("accountId", currentAccount.$id)]
     );
 
-    if (!currentUser) throw Error;
+    if (!currentUser || !currentUser.documents || !currentUser.documents.length) throw new Error('User not found');
 
     return currentUser.documents[0];
   } catch (error) {
