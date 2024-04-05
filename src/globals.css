@@ -302,5 +302,13 @@
     @apply flex gap-4 items-center justify-start hover:bg-transparent hover:text-white !important;
   }
 
-  /* Toast */
+  /* Tooltip */
+  .shad-tooltip {
+    @apply bg-light-1 text-dark-1 p-2 rounded-lg text-xs;
+  }
+
+  /* Mode Toggle */
+  .shad-mode-toggle {
+    @apply bg-light-1 text-dark-1 p-2 rounded-lg text-xs;
+  }
 }
