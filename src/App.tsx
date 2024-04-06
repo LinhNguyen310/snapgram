@@ -23,7 +23,7 @@ const App = () => {
   
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="absolute left-1">
+      <div className="absolute right-1">
         <ModeToggle />
       </div>
       <main className="flex h-screen">

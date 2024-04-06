@@ -318,6 +318,7 @@
   }
 
   /* Mode Toggle */
+
   .shad-mode-toggle {
     @apply bg-light-1 text-dark-1 p-2 rounded-lg text-xs;
   }
