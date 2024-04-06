@@ -11,19 +11,43 @@ import { INavLink } from "@/types";
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { EllipsisIcon } from "../icons/Ellipsis";
 const LeftSideBar = () => {
   const {user} = useUserContext();
   const {pathname} = useLocation();
   const {mutateAsync: signOut, isSuccess} = useSignOutAccount();
   const navigate = useNavigate();
+  const [mouseDown, setMouseDown] = useState(false);
+  const [width, setWidth] = useState(300);
+
+  const handleResizeMouseDown = (event: React.MouseEvent) => {
+    setMouseDown(true);
+    event.preventDefault();
+  };
+
+  const handleMouseUp = (_event: React.MouseEvent) => {
+    setMouseDown(false);
+  };
+
+  const handleMouseMove = (event: React.MouseEvent) => {
+    if (mouseDown) {
+      setWidth(event.pageX);
+      console.log(width)
+    }
+  }; 
+
   useEffect(() => {
     if (isSuccess) {
       navigate(0)
     }
   }, [isSuccess]);
+
   return (
-    <nav className='leftsidebar'>
+    <nav className='leftsidebar'
+    style={{ width: `${width}px` }}
+    onMouseUp={handleMouseUp}
+    onMouseMove={handleMouseMove}>
         <div className='flex flex-col gap-11'>
             <Link to = '/' className='pt-5 hidden md:block'>
                 <img src='/assets/images/logo.svg' alt='logo' width={170} height={36} />
@@ -34,7 +58,7 @@ const LeftSideBar = () => {
                 alt = 'profile'
                 className='h-8 w-8 rounded-full'
                 />
-                < div className='flex flex-col'>
+                {width >= 200 && < div className='flex flex-col'>
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger className='body-bold'>{user.name.length > 10 ? `${user.name.slice(0, 10)}...` : user.name}</TooltipTrigger>
@@ -52,6 +76,7 @@ const LeftSideBar = () => {
                         </Tooltip>
                     </TooltipProvider>
                 </div>
+                }
             </Link>
             <ul className="flex flex-col gap-6">
                 {sidebarLinks.map((link: INavLink) => {
@@ -71,7 +96,7 @@ const LeftSideBar = () => {
                             src={link.imgURL} 
                             alt={link.label}
                             className={(`group-hover:invert-white ${isActive && 'invert-white'}`)} />
-                            {link.label}
+                            {width >= 150 && <p>{link.label}</p>}
                         </NavLink>
                         </li>
                     )
@@ -82,8 +107,11 @@ const LeftSideBar = () => {
             signOut();
         }}>
             <img src='/assets/icons/logout.svg' alt='plus icon' />
-            <p className="small-medium md:base-medium">Logout</p>
+            {width >= 150 && <p className="small-medium md:base-medium">Logout</p>}
         </Button>
+        <div  onMouseDown={handleResizeMouseDown}>
+            <EllipsisIcon />
+        </div>
     </nav>
   )
 }

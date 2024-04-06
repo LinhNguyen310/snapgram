@@ -238,7 +238,7 @@
 
   /* Left sidebar */
   .leftsidebar {
-    @apply hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px] bg-dark-2;
+    @apply relative hidden md:flex px-6 py-10 flex-col justify-between min-w-[100px] max-w-[600px] bg-dark-2;
   }
 
   .leftsidebar-link {
@@ -262,6 +262,16 @@
   /* User card */
   .user-card {
     @apply flex-center flex-col gap-4 border border-dark-4 rounded-[20px] px-5 py-8;
+  }
+
+  /* Left sidebar ellipsis*/
+  .ellipsis-icon {
+    cursor: col-resize;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    transform: translateX(93%);
   }
 }
 
