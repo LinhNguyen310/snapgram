@@ -61,7 +61,7 @@ const LeftSideBar = () => {
                 {width >= 200 && < div className='flex flex-col'>
                     <TooltipProvider>
                         <Tooltip>
-                            <TooltipTrigger className='body-bold'>{user.name.length > 10 ? `${user.name.slice(0, 10)}...` : user.name}</TooltipTrigger>
+                            <TooltipTrigger className='body-bold text-white'>{user.name.length > 10 ? `${user.name.slice(0, 10)}...` : user.name}</TooltipTrigger>
                             <TooltipContent className="shad-tooltip">
                                 <p>{user.name}</p>
                             </TooltipContent>
@@ -95,8 +95,8 @@ const LeftSideBar = () => {
                             <img 
                             src={link.imgURL} 
                             alt={link.label}
-                            className={(`group-hover:invert-white ${isActive && 'invert-white'}`)} />
-                            {width >= 150 && <p>{link.label}</p>}
+                            className={(`group-hover:invert-black ${isActive && 'invert-black'}`)} />
+                            {width >= 150 && <p className={`group-hover:invert ${isActive ? 'text-black' : 'text-white'}`}>{link.label}</p>}
                         </NavLink>
                         </li>
                     )
@@ -107,7 +107,7 @@ const LeftSideBar = () => {
             signOut();
         }}>
             <img src='/assets/icons/logout.svg' alt='plus icon' />
-            {width >= 150 && <p className="small-medium md:base-medium">Logout</p>}
+            {width >= 150 && <p className="small-medium md:base-medium text-white">Logout</p>}
         </Button>
         <div  onMouseDown={handleResizeMouseDown}>
             <EllipsisIcon />

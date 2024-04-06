@@ -207,7 +207,62 @@
 
   /* Bottom bar */
   .bottom-bar {
-    @apply z-50 flex-between w-full sticky bottom-0 rounded-t-[20px] bg-dark-2 px-5 py-4 md:hidden;
+    @apply z-50 flex-between sticky w-auto bottom-0 rounded-full bg-dark-2 px-20 py-4 md:hidden;
+  }
+  .bottombar-addbutton {
+    @apply z-50 bg-primary-500 rounded-full border-white border-[3px] border-solid text-white p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+  }
+
+  .bottombar-addimagebutton.light {
+    @apply bg-dark-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+  }
+  .bottombar-addimagebutton.dark {
+    @apply bg-light-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+  }
+  .imagebutton{
+    @apply text-white;
+  }
+
+  .imagebutton.light{
+    @apply text-white;
+  }
+  .imagebutton.dark{
+    @apply text-black;
+  }
+
+  .bottombar-addvideobutton.light {
+    @apply bg-dark-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+  }
+  .bottombar-addvideobutton.dark {
+    @apply bg-light-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+  }
+  .videobutton{
+    @apply text-black;
+  }
+  .videobutton.light{
+    @apply text-white;
+  }
+  .videobutton.dark{
+    @apply text-dark-1;
+  }
+  
+  .bottombar-livestreambutton.light {
+    @apply bg-dark-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+  }
+  .bottombar-livestreambutton.dark {
+    @apply bg-light-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+  }
+  .livestreambutton{
+    @apply text-white;
+  }
+  .livestreambutton.light{
+    @apply text-white;
+  }
+  .livestreambutton.dark{
+    @apply text-dark-1;
+  }
+  .bottombar-link{
+    @apply hover:bg-primary-500
   }
 
   /* File uploader */

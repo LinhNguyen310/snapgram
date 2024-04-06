@@ -24,7 +24,6 @@ const SigninForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
-  console.log("helloaaaaaa")
 
   const { theme } = useTheme();
   const inputClass = `shad-input ${theme}`;
@@ -36,15 +35,12 @@ const SigninForm = () => {
       password: "",
     },
   });
-  console.log("hellobbbbbbbbbb")
 
   // Queries
   const { mutateAsync: signInAccount, isPending: isSigningInUser } = useSignInAccount();
   // Handler
-  console.log("helloddddddddd")
 
   const handleSignin = async (user: z.infer<typeof SigninValidation>) => {
-    console.log("hello")
     try {
       const session = await signInAccount({
         email: user.email,
@@ -70,7 +66,6 @@ const SigninForm = () => {
       console.log({ error });
     }
   };
-  console.log("helloeeeeee")
 
   return (
     <>
