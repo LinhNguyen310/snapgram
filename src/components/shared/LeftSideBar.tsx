@@ -28,6 +28,7 @@ const LeftSideBar = () => {
 
   const handleMouseUp = (_event: React.MouseEvent) => {
     setMouseDown(false);
+    _event.preventDefault();
   };
 
   const handleMouseMove = (event: React.MouseEvent) => {
@@ -46,7 +47,6 @@ const LeftSideBar = () => {
   return (
     <nav className='leftsidebar'
     style={{ width: `${width}px` }}
-    onMouseUp={handleMouseUp}
     onMouseMove={handleMouseMove}>
         <div className='flex flex-col gap-11'>
             <Link to = '/' className='pt-5 hidden md:block'>
@@ -96,7 +96,7 @@ const LeftSideBar = () => {
                             src={link.imgURL} 
                             alt={link.label}
                             className={(`group-hover:invert-black ${isActive && 'invert-black'}`)} />
-                            {width >= 150 && <p className={`group-hover:invert ${isActive ? 'text-black' : 'text-white'}`}>{link.label}</p>}
+                            {width >= 150 && <p className={`group-hover:text-black ${isActive ? 'text-black' : 'text-white'}`}>{link.label}</p>}
                         </NavLink>
                         </li>
                     )
@@ -109,7 +109,10 @@ const LeftSideBar = () => {
             <img src='/assets/icons/logout.svg' alt='plus icon' />
             {width >= 150 && <p className="small-medium md:base-medium text-white">Logout</p>}
         </Button>
-        <div  onMouseDown={handleResizeMouseDown}>
+        <div  onMouseDown={handleResizeMouseDown}
+        onMouseUp={handleMouseUp}
+
+        >
             <EllipsisIcon />
         </div>
     </nav>
