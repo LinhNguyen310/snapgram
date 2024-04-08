@@ -207,17 +207,16 @@
 
   /* Bottom bar */
   .bottom-bar {
-    @apply z-50 flex-between sticky w-auto bottom-0 rounded-full bg-dark-2 px-20 py-4 md:hidden;
+    @apply z-50 flex-between sticky w-auto bottom-0 rounded-full bg-dark-2 px-10 sm:px-20 py-4 md:hidden;
   }
   .bottombar-addbutton {
-    @apply z-50 bg-primary-500 rounded-full border-white border-[3px] border-solid text-white p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
-  }
+    @apply z-50 bg-primary-500 rounded-full border-white border-[3px] border-solid text-white p-4 sm:p-6 md:p-5 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;  }
 
   .bottombar-addimagebutton.light {
-    @apply bg-dark-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+    @apply bg-dark-1 rounded-full p-4 sm:p-6 md:p-5 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
   }
   .bottombar-addimagebutton.dark {
-    @apply bg-light-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+    @apply bg-light-1 rounded-full p-4 sm:p-6 md:p-5 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
   }
   .imagebutton{
     @apply text-white;
@@ -231,10 +230,10 @@
   }
 
   .bottombar-addvideobutton.light {
-    @apply bg-dark-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+    @apply bg-dark-1 rounded-full p-4 sm:p-6 md:p-5 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
   }
   .bottombar-addvideobutton.dark {
-    @apply bg-light-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+    @apply bg-light-1 rounded-full p-4 sm:p-6 md:p-5 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
   }
   .videobutton{
     @apply text-black;
@@ -247,10 +246,10 @@
   }
   
   .bottombar-livestreambutton.light {
-    @apply bg-dark-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+    @apply bg-dark-1 rounded-full p-4 sm:p-6 md:p-5 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
   }
   .bottombar-livestreambutton.dark {
-    @apply bg-light-1 rounded-full p-8 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
+    @apply bg-light-1 rounded-full p-4 sm:p-6 md:p-5 absolute left-[50%] transform -translate-x-1/2 -translate-y-1/2 items-center justify-center;
   }
   .livestreambutton{
     @apply text-white;
@@ -354,13 +353,13 @@
 
   /* Button */
   .shad-button_primary.dark{
-    @apply bg-primary-500 hover:bg-primary-500 text-light-1 flex gap-2 !important;
+    @apply bg-primary-500 h-12 text-dark-1 flex gap-2 !important;
   }
   .shad-button_primary.light{
-    @apply bg-dark-4 text-light-1 flex gap-2 !important;
+    @apply bg-dark-1 h-12 text-light-1 flex gap-2 !important;
   }
   .shad-button_dark_4 {
-    @apply h-12 bg-dark-4 px-5 text-light-1 flex gap-2 !important;
+    @apply h-12 bg-dark-4 px-5 text-dark-1 flex gap-2 !important;
   }
 
   .shad-button_ghost {

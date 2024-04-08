@@ -43,8 +43,8 @@ const Bottombar = () => {
       })
       gsap.to('.bottombar-addimagebutton', {
         duration: 0.5,
-        y: -90,
-        x:-120,
+        y: -50,
+        x:-70,
         opacity: 1,
         delay: 0,
         stagger: 0.1,
@@ -52,7 +52,7 @@ const Bottombar = () => {
 
       gsap.to('.bottombar-addvideobutton', {
         duration: 0.5,
-        y: -100,
+        y: -70,
         x: 0,
         opacity: 1,
         delay: 0.4,
@@ -60,8 +60,8 @@ const Bottombar = () => {
       })
       gsap.to('.bottombar-livestreambutton', {
         duration: 0.5,
-        y: -90,
-        x:120,
+        y: -50,
+        x:70,
         opacity: 1,
         delay: 0.5,
         stagger: 0.1,
@@ -75,7 +75,6 @@ const Bottombar = () => {
     } else {
     gsap.to('.bottombar-addbutton', {
       duration: 0.5,
-      y:0,
       backgroundColor:'#F9F0FF',
       delay: 0.5,
     })
@@ -125,12 +124,12 @@ const Bottombar = () => {
               >
               <Link
                   to={link.route}
-                  className='flex gap-4 items-center p-4 px-10 rounded-full'
+                  className='flex gap-4 items-center p-4 px-6 sm:px-10 md:px-9 rounded-full'
               >
                   <img 
                   src={link.imgURL} 
                   alt={link.label} />
-                  <p className={`group-hover:invert ${isActive ? 'text-black' : 'text-white'}`}>{link.label}</p>
+                  <p className={`group-hover:text-black ${isActive ? 'text-black' : 'text-white'}`}>{link.label}</p>
                   </Link>
               </li>
           )
