@@ -10,7 +10,11 @@ const Home = () => {
           <h2 className="h2-bold md:h3-bold text-left w-full">
             Home
             {isPostLoading && !posts ? 
-            (<LazyLoader />) : null}
+            (<LazyLoader />) : (
+              <ul>
+                
+              </ul>
+            )}
           </h2>
         </div>
       </div>
