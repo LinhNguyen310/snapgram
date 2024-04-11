@@ -1,4 +1,4 @@
-import LazyLoader from "@/components/shared/LazyLoader";
+import {LazyLoader} from "@/components/shared";
 
 const Home = () => {
   const isPostLoading = true;
@@ -12,7 +12,7 @@ const Home = () => {
             {isPostLoading && !posts ? 
             (<LazyLoader />) : (
               <ul>
-                
+
               </ul>
             )}
           </h2>

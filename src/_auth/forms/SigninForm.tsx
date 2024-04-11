@@ -20,7 +20,6 @@ import {Link, useNavigate } from "react-router-dom"
 import { useTheme } from "@/components/ui/theme-provider"
 
 const SigninForm = () => {
-  console.log("helloaaa")
   const { toast } = useToast();
   const navigate = useNavigate();
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
@@ -53,7 +52,6 @@ const SigninForm = () => {
       }
 
       const isLoggedIn = await checkAuthUser();
-      console.log({ isLoggedIn });
       if (isLoggedIn) {
         form.reset();
 

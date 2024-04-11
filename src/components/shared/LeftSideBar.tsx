@@ -34,7 +34,6 @@ const LeftSideBar = () => {
   const handleMouseMove = (event: React.MouseEvent) => {
     if (mouseDown) {
       setWidth(event.pageX);
-      console.log(width)
     }
   }; 
 

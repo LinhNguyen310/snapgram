@@ -337,10 +337,12 @@
 @layer components {
   /* SHADCN COMPONENTS */
   /* Form */
-  .shad-form_label {
+  .shad-form_label.dark{
     @apply text-white !important;
   }
-
+  .shad-form_label.light{
+    @apply text-dark-3 !important;
+  }
   .shad-form_message {
     @apply text-red !important;
   }
@@ -351,14 +353,22 @@
   .shad-input.light {
     @apply h-10 bg-light-1 border-dark-1 placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
   }
-
-  .shad-textarea {
-    @apply h-36 bg-dark-3 rounded-xl border-none focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+  .shad-input-form.dark {
+    @apply h-10 bg-dark-3 border-none placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+  }
+  .shad-input--form.light {
+    @apply h-10 bg-light-1 border-dark-1 placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
   }
 
+  .shad-textarea.dark {
+    @apply h-36 bg-dark-3 rounded-xl border-none focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+  }
+  .shad-textarea.light {
+    @apply h-36 bg-slate-100 rounded-xl border-none focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+  }
   /* Button */
   .shad-button_primary.dark{
-    @apply bg-primary-500 h-12 text-dark-1 flex gap-2 !important;
+    @apply bg-primary-600 h-12 text-dark-1 flex gap-2 !important;
   }
   .shad-button_primary.light{
     @apply bg-dark-1 h-12 text-light-1 flex gap-2 !important;
