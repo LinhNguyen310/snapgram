@@ -66,6 +66,7 @@ const PostForm = ({post} :PostFormProps) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-9 w-full max-w-5xl">
         <FormField
           control={form.control}
+          name="username"
           render={({ field }) => (
             <FormItem>
               <FormLabel className='sha-form_label'>Caption</FormLabel>
