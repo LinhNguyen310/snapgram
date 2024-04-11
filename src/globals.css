@@ -327,6 +327,11 @@
     transform: translateY(-50%);
     transform: translateX(93%);
   }
+
+  /* Lazy Loader */
+  .loader-maincard{
+    @apply   w-full max-w-screen-sm;
+  }
 }
 
 @layer components {
