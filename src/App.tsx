@@ -40,7 +40,7 @@ const App = () => {
             <Route path="/explore" element={<Explore />} />
             <Route path="/saved" element={<Saved />} />
             <Route path="/all-users" element={<AllUsers />} />
-            <Route path="/create-post/:id" element={<CreatePost />} />
+            <Route path="/create-post" element={<CreatePost />} />
             <Route path="/update-post/:id" element={<EditPost />} />
             <Route path="/profile/:id/*" element={<Profile />} />
             <Route path="/update-profile/:id" element={<UpdateProfile />} />
