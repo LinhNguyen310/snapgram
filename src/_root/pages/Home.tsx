@@ -1,8 +1,9 @@
-import {LazyLoader} from "@/components/shared";
+import {LazyLoader, PostCard} from "@/components/shared";
+import { useGetRecentPosts } from "@/lib/react-query/queriesAndMutations";
+import { Models } from "appwrite";
 
 const Home = () => {
-  const isPostLoading = true;
-  const posts = null;
+  const {data: posts, isPending: isPostLoading, isError: isErrorPosts} = useGetRecentPosts();
   return (
     <div className="flex flex-1">
       <div className="home-container">
@@ -11,8 +12,11 @@ const Home = () => {
             Home
             {isPostLoading && !posts ? 
             (<LazyLoader />) : (
-              <ul>
-
+              <ul className="flex flex-col flex-1 gap-9 w-full">
+                {posts?.documents.map((post: Models.Document) => (
+                  <PostCard key={post.$id} post={post} />
+                ))
+              }
               </ul>
             )}
           </h2>
