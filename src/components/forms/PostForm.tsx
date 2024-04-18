@@ -16,7 +16,7 @@ import { PostValidation } from "@/lib/validation";
 import { useToast } from "@/components/ui/use-toast";
 import { useUserContext } from "@/context/AuthContext";
 import { FileUploader, Loader } from "@/components/shared";
-import { useCreatePost } from "@/lib/react-query/queriesAndMutations";
+import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
@@ -24,9 +24,10 @@ import { useTheme } from "../ui/theme-provider";
 
 type PostFormProps = {
   post?: Models.Document;
+  action: "Update" | "Create";
 };
 
-const PostForm = ({ post }: PostFormProps) => {
+const PostForm = ({ post, action }: PostFormProps) => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { user } = useUserContext();
@@ -34,7 +35,6 @@ const PostForm = ({ post }: PostFormProps) => {
   const shadButtonClass = `shad-button_primary ${theme}`;
   const shadLabelClass = `shad-form_label ${theme}`;
   const shadInputClass = `shad-input-form ${theme}`;
-  const shadTextareaClass = `shad-textarea ${theme}`;
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
     defaultValues: {
@@ -48,11 +48,27 @@ const PostForm = ({ post }: PostFormProps) => {
   // Query
   const { mutateAsync: createPost, isPending: isLoadingCreate } =
     useCreatePost();
-
+  const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
+  useUpdatePost();
   // Handler
   const handleSubmit = async (value: z.infer<typeof PostValidation>) => {
     // ACTION = UPDATE
     // ACTION = CREATE
+    if (post && action === 'Update'){
+      const updatedPost = await updatePost({
+        ...value,
+        postId: post.$id,
+        imageId: post?.imageId,
+        imageUrl: post?.imageUrl
+      });
+      if (!updatedPost) {
+        toast({
+          title: `post failed. Please try again.`,
+        });
+      }
+      return navigate(`/post/${post.$id}`)
+    } 
+    // create new post
     const newPost = await createPost({
       ...value,
       userId: user.id,
@@ -158,9 +174,9 @@ const PostForm = ({ post }: PostFormProps) => {
             <Button
             type="submit"
             className={`${shadButtonClass} whitespace-nowrap`}
-            disabled={isLoadingCreate}>
-            {(isLoadingCreate) && <Loader />}
-            Post
+            disabled={isLoadingCreate || isLoadingUpdate}>
+            {(isLoadingCreate || isLoadingUpdate) && <Loader />}
+            {action} Post
           </Button>)}
           </>
 
