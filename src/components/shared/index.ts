@@ -5,3 +5,4 @@ export { default as LazyLoader } from "./LazyLoader";
 export { default as LeftSidebar } from "./LeftSideBar";
 export { default as Topbar } from "./Topbar";
 export { default as PostCard } from "./PostCard";
+export { default as GridPostList } from "./GridPostList";
